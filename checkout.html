@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Checkout - Grill House</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --input-bg: #252525;
+  --text: #f5f5f5;
+  --muted: #9b9b9b;
+  --accent: #ff6a00;
+  --border: rgba(255,255,255,0.08);
+  --error: #ff4d4d;
+  --success: #00b894;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,system-ui,sans-serif}
+body{background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh}
+
+/* Header */
+header{padding:18px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.brand{color:var(--accent);font-weight:800;font-size:22px;text-decoration:none;letter-spacing:1px}
+.back-link{color:var(--muted);text-decoration:none;font-size:14px;display:flex;align-items:center;gap:6px;transition:0.3s}
+.back-link:hover{color:var(--accent)}
+
+/* Layout */
+.container{max-width:1100px;margin:30px auto;padding:0 20px;width:100%;display:grid;grid-template-columns:1.2fr 0.8fr;gap:30px}
+
+/* Cards */
+.card{background:var(--surface);border-radius:12px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+.card h2{color:var(--accent);margin-bottom:20px;font-size:20px;border-bottom:1px solid var(--border);padding-bottom:10px}
+
+/* Forms */
+.form-group{margin-bottom:16px}
+label{display:block;color:var(--muted);font-size:13px;margin-bottom:6px;font-weight:600}
+input, select, textarea{
+  width:100%;background:var(--input-bg);border:1px solid var(--border);
+  color:var(--text);padding:12px;border-radius:8px;font-size:14px;outline:none;transition:0.3s;
+}
+input:focus, textarea:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(255,106,0,0.1)}
+textarea{resize:vertical;min-height:80px}
+.error-msg{color:var(--error);font-size:12px;margin-top:5px;display:none}
+
+/* Buttons */
+.btn{width:100%;padding:12px;border-radius:8px;border:none;font-weight:800;cursor:pointer;font-size:14px;transition:0.3s}
+.btn-primary{background:var(--accent);color:#000}
+.btn-primary:hover{filter:brightness(1.1)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--muted);margin-top:10px}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Auth Toggles */
+.auth-toggle{display:flex;margin-bottom:20px;background:var(--input-bg);border-radius:8px;padding:4px}
+.toggle-btn{flex:1;background:transparent;border:0;color:var(--muted);padding:8px;border-radius:6px;cursor:pointer;font-weight:700}
+.toggle-btn.active{background:var(--surface);color:var(--text);box-shadow:0 2px 5px rgba(0,0,0,0.2)}
+
+/* Order Summary */
+.summary-row{display:flex;justify-content:space-between;margin-bottom:12px;font-size:14px;color:var(--muted)}
+.summary-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
+.total-row{display:flex;justify-content:space-between;margin-top:15px;padding-top:15px;border-top:1px dashed var(--muted);font-size:18px;font-weight:800;color:var(--accent)}
+
+/* States */
+.hidden{display:none !important}
+#loggedInView{text-align:center}
+.user-badge{display:inline-block;background:rgba(255,106,0,0.1);color:var(--accent);padding:8px 16px;border-radius:20px;margin-bottom:15px;font-weight:700}
+
+/* Toast */
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;opacity:0;pointer-events:none;transition:0.3s;z-index:999;box-shadow:0 5px 15px rgba(0,0,0,0.3)}
+#toast.show{opacity:1;bottom:40px}
+
+/* Responsive */
+@media(max-width: 768px){ .container{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="brand">GRILL HOUSE</a>
+  <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Menu</a>
+</header>
+
+<div class="container">
+  
+  <div class="left-col">
+    
+    <div class="card" id="authSection">
+      <div id="authForms">
+        <div class="auth-toggle">
+          <button class="toggle-btn active" onclick="switchTab('login')">Login</button>
+          <button class="toggle-btn" onclick="switchTab('signup')">Sign Up</button>
+        </div>
+
+        <div id="loginForm">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="loginEmail" placeholder="you@example.com">
+            <div class="error-msg" id="loginEmailErr"></div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPass" placeholder="••••••••">
+            <div class="error-msg" id="loginPassErr"></div>
+          </div>
+          <button class="btn btn-primary" onclick="handleLogin()">SECURE LOGIN <i class="fa-solid fa-lock"></i></button>
+        </div>
+
+        <div id="signupForm" class="hidden">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="regName" placeholder="e.g. Ali Khan">
+            <div class="error-msg" id="regNameErr"></div>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="regPhone" placeholder="03123456789">
+            <div class="error-msg" id="regPhoneErr"></div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="regEmail" placeholder="you@example.com">
+            <div class="error-msg" id="regEmailErr"></div>
+          </div>
+          <div class="form-group">
+            <label>Create Password</label>
+            <input type="password" id="regPass" placeholder="Min 8 chars, 1 letter, 1 number">
+            <div class="error-msg" id="regPassErr"></div>
+          </div>
+          <button class="btn btn-primary" onclick="handleSignup()">CREATE ACCOUNT</button>
+        </div>
+      </div>
+
+      <div id="loggedInView" class="hidden">
+        <h2><i class="fa-solid fa-user-check"></i> Account Verified</h2>
+        <div class="user-badge" id="userNameDisplay"></div>
+        <p style="color:var(--muted); font-size:14px; margin-bottom:15px">You are logged in and ready to order.</p>
+        <button class="btn btn-outline" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="card hidden" id="shippingSection" style="margin-top:20px;">
+      <h2>Delivery Details</h2>
+      <div class="form-group">
+        <label>Delivery Address</label>
+        <textarea id="address" placeholder="House #, Street, Area..."></textarea>
+        <div class="error-msg" id="addressErr"></div>
+      </div>
+      <div class="form-group">
+        <label>Payment Method</label>
+        <select id="payment">
+          <option value="cod">Cash on Delivery</option>
+          <option value="card">Credit Card (Demo)</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" onclick="placeOrder()">CONFIRM ORDER</button>
+    </div>
+
+  </div>
+
+  <div class="right-col">
+    <div class="card">
+      <h2>Order Summary</h2>
+      <div id="cartList">
+        <div style="text-align:center; padding:20px; color:var(--muted)">Your cart is empty</div>
+      </div>
+      
+      <div style="margin-top:20px">
+        <div class="summary-row"><span>Subtotal</span> <span id="subtotal">Rs 0</span></div>
+        <div class="summary-row"><span>Delivery Fee</span> <span id="delivery">Rs 0</span></div>
+        <div class="total-row"><span>Total</span> <span id="total">Rs 0</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="toast">Message</div>
+
+<script>
+/* ================= CONFIG ================= */
+const KEYS = {
+  USERS: 'grill_house_users_db',      // Permanent Storage
+  SESSION: 'grill_house_session',     // Active Session
+  CART: 'grill_house_cart_v1',        // Cart Items
+  ORDERS: 'grill_house_orders'        // Order History
+};
+
+/* ================= REGEX PATTERNS ================= */
+const REGEX = {
+  name: /^[a-zA-Z\s]{3,30}$/,                 // Letters only, min 3
+  phone: /^03\d{9}$/,                         // Pakistani format: 03326193848
+  email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,        // Standard Email
+  pass: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/ // Min 8, 1 Letter, 1 Num
+};
+
+/* ================= STATE ================= */
+let cart = [];
+let currentUser = null;
+
+/* ================= INIT ================= */
+window.onload = function(){
+  loadCart();
+  checkSession();
+};
+
+function toast(msg, type='neutral'){
+  const t = document.getElementById('toast');
+  t.innerText = msg;
+  t.style.background = type === 'error' ? 'var(--error)' : (type === 'success' ? 'var(--success)' : '#333');
+  t.classList.add('show');
+  setTimeout(()=> t.classList.remove('show'), 3000);
+}
+
+function loadCart(){
+  const raw = localStorage.getItem(KEYS.CART);
+  cart = raw ? JSON.parse(raw) : [];
+  renderCart();
+}
+
+function renderCart(){
+  const container = document.getElementById('cartList');
+  container.innerHTML = '';
+  
+  if(cart.length === 0){
+    container.innerHTML = '<div style="text-align:center; padding:20px; color:var(--muted)">Cart is empty. <br><a href="index.html" style="color:var(--accent)">Go to Menu</a></div>';
+    document.getElementById('subtotal').innerText = 'Rs 0';
+    document.getElementById('total').innerText = 'Rs 0';
+    return;
+  }
+
+  let sub = 0;
+  cart.forEach(item => {
+    sub += item.price * item.qty;
+    const div = document.createElement('div');
+    div.className = 'summary-item';
+    div.innerHTML = `
+      <div>
+        <div style="color:#fff; font-weight:600">${item.qty}x ${item.name}</div>
+        <div style="font-size:12px; color:var(--muted)">${item.category}</div>
+      </div>
+      <div>Rs ${(item.price * item.qty).toLocaleString()}</div>
+    `;
+    container.appendChild(div);
+  });
+
+  const del = sub > 2000 ? 0 : 150; // Free delivery over 2000
+  document.getElementById('subtotal').innerText = `Rs ${sub.toLocaleString()}`;
+  document.getElementById('delivery').innerText = del === 0 ? 'Free' : `Rs ${del}`;
+  document.getElementById('total').innerText = `Rs ${(sub+del).toLocaleString()}`;
+}
+
+/* ================= AUTH LOGIC ================= */
+
+// UI Toggles
+function switchTab(tab){
+  const btns = document.querySelectorAll('.toggle-btn');
+  btns.forEach(b => b.classList.remove('active'));
+  
+  if(tab === 'login'){
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('signupForm').classList.add('hidden');
+    btns[0].classList.add('active');
+  } else {
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('signupForm').classList.remove('hidden');
+    btns[1].classList.add('active');
+  }
+  clearErrors();
+}
+
+function clearErrors(){
+  document.querySelectorAll('.error-msg').forEach(e => {e.innerText = ''; e.style.display='none'});
+}
+
+function showError(id, msg){
+  const el = document.getElementById(id);
+  el.innerText = msg;
+  el.style.display = 'block';
+}
+
+// 1. SIGNUP
+function handleSignup(){
+  clearErrors();
+  const name = document.getElementById('regName').value.trim();
+  const phone = document.getElementById('regPhone').value.trim();
+  const email = document.getElementById('regEmail').value.trim().toLowerCase();
+  const pass = document.getElementById('regPass').value;
+
+  // Validation
+  let isValid = true;
+  if(!REGEX.name.test(name)) { showError('regNameErr', 'Enter valid name (3+ letters)'); isValid=false; }
+  if(!REGEX.phone.test(phone)) { showError('regPhoneErr', 'Format: 03123456789'); isValid=false; }
+  if(!REGEX.email.test(email)) { showError('regEmailErr', 'Invalid email address'); isValid=false; }
+  if(!REGEX.pass.test(pass)) { showError('regPassErr', 'Min 8 chars, include letter & number'); isValid=false; }
+
+  if(!isValid) return;
+
+  // Logic: Check Duplicate in LocalStorage
+  const users = JSON.parse(localStorage.getItem(KEYS.USERS) || '[]');
+  if(users.find(u => u.email === email)){
+    showError('regEmailErr', 'Email already exists. Please login.');
+    return;
+  }
+
+  // Create User
+  const newUser = { id: Date.now(), name, phone, email, pass };
+  
+  // Save to Permanent DB (Local)
+  users.push(newUser);
+  localStorage.setItem(KEYS.USERS, JSON.stringify(users));
+
+  // Save to Active Session (Session)
+  sessionStorage.setItem(KEYS.SESSION, JSON.stringify(newUser));
+
+  toast('Account Created!', 'success');
+  checkSession();
+}
+
+// 2. LOGIN
+function handleLogin(){
+  clearErrors();
+  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pass = document.getElementById('loginPass').value;
+
+  if(!email || !pass) { toast('Please fill all fields', 'error'); return; }
+
+  // Logic: Check LocalStorage
+  const users = JSON.parse(localStorage.getItem(KEYS.USERS) || '[]');
+  const user = users.find(u => u.email === email && u.pass === pass);
+
+  if(user){
+    // Save to Active Session
+    sessionStorage.setItem(KEYS.SESSION, JSON.stringify(user));
+    toast('Welcome back!', 'success');
+    checkSession();
+  } else {
+    showError('loginPassErr', 'Invalid credentials');
+    toast('Login Failed', 'error');
+  }
+}
+
+// 3. CHECK SESSION (Update UI)
+function checkSession(){
+  const raw = sessionStorage.getItem(KEYS.SESSION);
+  if(raw){
+    currentUser = JSON.parse(raw);
+    document.getElementById('authForms').classList.add('hidden');
+    document.getElementById('loggedInView').classList.remove('hidden');
+    document.getElementById('shippingSection').classList.remove('hidden'); // Show address form
+    document.getElementById('userNameDisplay').innerText = currentUser.name;
+    // Pre-fill phone if available
+    // document.getElementById('address').focus(); 
+  } else {
+    currentUser = null;
+    document.getElementById('authForms').classList.remove('hidden');
+    document.getElementById('loggedInView').classList.add('hidden');
+    document.getElementById('shippingSection').classList.add('hidden'); // Hide address form
+  }
+}
+
+function logout(){
+  sessionStorage.removeItem(KEYS.SESSION);
+  checkSession();
+  toast('Logged out');
+}
+
+/* ================= ORDER LOGIC ================= */
+function placeOrder(){
+  // 1. Check Session
+  if(!currentUser) { toast('Please login to order', 'error'); return; }
+
+  // 2. Check Cart
+  if(cart.length === 0) { toast('Cart is empty', 'error'); return; }
+
+  // 3. Validate Address
+  const address = document.getElementById('address').value.trim();
+  if(address.length < 10){
+    showError('addressErr', 'Please enter a complete address');
+    return;
+  }
+
+  // 4. Create Order
+  const order = {
+    orderId: 'ORD-' + Math.floor(Math.random()*100000),
+    user: currentUser,
+    items: cart,
+    address: address,
+    payment: document.getElementById('payment').value,
+    date: new Date().toLocaleString(),
+    total: document.getElementById('total').innerText
+  };
+
+  // 5. Save Order to LocalStorage
+  const orders = JSON.parse(localStorage.getItem(KEYS.ORDERS) || '[]');
+  orders.push(order);
+  localStorage.setItem(KEYS.ORDERS, JSON.stringify(orders));
+
+  // 6. Clear Cart & Redirect
+  localStorage.removeItem(KEYS.CART);
+  toast('Order Placed Successfully!', 'success');
+  
+  setTimeout(() => {
+    alert(`Order ${order.orderId} Confirmed!\nThank you ${currentUser.name}.`);
+    window.location.href = 'index.html';
+  }, 1500);
+}
+
+</script>
+</body>
+</html>

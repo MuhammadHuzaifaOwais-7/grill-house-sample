@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Grill House | Premium Dark Grill & Dining – North Karachi</title>
+<meta name="description" content="Grill House – North Karachi's finest flame-crafted cuisine. BBQ, steaks, burgers, pizza, and more. Order online."/>
+<meta name="theme-color" content="#0a0a0a"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600;9..40,800&display=swap" rel="stylesheet"/>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+<style>
+/* =================================================================
+   VARIABLES & BASE
+================================================================= */
+:root{
+  --bg:#0a0a0a; --surf:#111; --surf2:#181818; --surf3:#1e1e1e;
+  --bdr:rgba(255,255,255,.07); --text:#f0ece4; --muted:#7a7060;
+  --accent:#ff6a00; --accent2:#ffaa55; --ember:#ff2c00;
+  --gold:#c9a84c; --success:#3ecf8e; --danger:#ff4757;
+  --glow:0 0 28px rgba(255,106,0,.38);
+  --glow-sm:0 0 12px rgba(255,106,0,.22);
+  --r:14px; --rc:18px; --tr:.35s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+body.no-scroll{overflow:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
+a{color:inherit;text-decoration:none}
+.fd{font-family:'Playfair Display',serif}
+
+/* =================================================================
+   LOADING SCREEN
+================================================================= */
+#ls{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .6s,visibility .6s}
+#ls.out{opacity:0;visibility:hidden}
+.ls-brand{font-family:'Playfair Display',serif;font-size:clamp(30px,7vw,58px);font-weight:900;color:var(--accent);letter-spacing:5px;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{text-shadow:0 0 18px rgba(255,106,0,.4)}50%{text-shadow:0 0 50px rgba(255,106,0,.9),0 0 90px rgba(255,44,0,.5)}}
+.ls-bar-bg{width:210px;height:4px;background:var(--surf2);border-radius:10px;overflow:hidden}
+.ls-bar{height:100%;width:0;background:linear-gradient(90deg,var(--ember),var(--accent),var(--accent2));border-radius:10px;animation:fill 2.3s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes fill{to{width:100%}}
+.ls-sub{color:var(--muted);font-size:12px;letter-spacing:4px;text-transform:uppercase}
+
+/* =================================================================
+   HEADER
+================================================================= */
+#hdr{position:sticky;top:0;z-index:1000;background:rgba(10,10,10,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr);transition:box-shadow var(--tr)}
+#hdr.scrolled{box-shadow:0 4px 40px rgba(255,106,0,.07)}
+.hdr-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:10px 22px;gap:10px}
+.hdr-left{display:flex;gap:8px;align-items:center}
+.hpill{display:flex;align-items:center;gap:7px;padding:6px 13px;border-radius:30px;border:1px solid var(--bdr);background:var(--surf);font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;transition:var(--tr);white-space:nowrap}
+.hpill:hover,.hpill:focus{border-color:var(--accent);box-shadow:var(--glow-sm);outline:none}
+.hpill-txt{display:inline}
+.hdr-brand{text-align:center}
+.brand-name{font-family:'Playfair Display',serif;font-size:clamp(18px,3vw,26px);font-weight:900;color:var(--accent);letter-spacing:2px;line-height:1}
+.brand-sub{font-size:9px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-top:2px}
+.hdr-right{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.ibtn{position:relative;width:40px;height:40px;border-radius:50%;background:var(--surf);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--text);cursor:pointer;transition:var(--tr)}
+.ibtn:hover,.ibtn:focus{border-color:var(--accent);color:var(--accent);box-shadow:var(--glow-sm);outline:none}
+.cbadge{position:absolute;top:-4px;right:-4px;background:var(--accent);color:#000;font-size:10px;font-weight:900;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.wbadge{position:absolute;top:-4px;right:-4px;background:var(--danger);color:#fff;font-size:10px;font-weight:900;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.u-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--ember),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;color:#fff;cursor:pointer;border:none;transition:var(--tr)}
+.u-avatar:hover{box-shadow:var(--glow-sm)}
+.u-drop{position:absolute;top:calc(100% + 8px);right:0;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rc);min-width:175px;box-shadow:0 12px 36px rgba(0,0,0,.5);z-index:1001;overflow:hidden;display:none}
+.u-drop.open{display:block}
+.udrop-row{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:background var(--tr)}
+.udrop-row:hover{background:rgba(255,106,0,.08)}
+.udrop-row.dng{color:var(--danger)}
+.udrop-row.dng:hover{background:rgba(255,71,87,.08)}
+
+/* =================================================================
+   CATEGORY NAV
+================================================================= */
+#cnav{background:var(--surf);border-bottom:1px solid var(--bdr);position:sticky;top:65px;z-index:990}
+.cnav-inner{display:flex;align-items:center;padding:0 6px}
+.cnav-arr{width:34px;height:50px;background:transparent;border:none;color:var(--muted);font-size:13px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:color var(--tr)}
+.cnav-arr:hover{color:var(--accent)}
+.cnav-track{display:flex;gap:4px;overflow-x:auto;scroll-behavior:smooth;padding:8px 2px;flex:1}
+.cnav-track::-webkit-scrollbar{display:none}
+.ccat{padding:7px 16px;border-radius:30px;border:1px solid var(--bdr);background:transparent;color:var(--muted);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:var(--tr);font-family:'DM Sans',sans-serif}
+.ccat:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+.ccat.act{background:var(--accent);border-color:var(--accent);color:#000;box-shadow:var(--glow-sm)}
+
+/* =================================================================
+   HERO CAROUSEL
+================================================================= */
+#hero{position:relative;height:clamp(340px,58vh,600px);overflow:hidden;background:#000}
+.hslide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease,transform 1.2s ease;transform:scale(1.06)}
+.hslide.act{opacity:1;transform:scale(1);z-index:2}
+.hslide.lv{opacity:0;transform:scale(.97);z-index:1}
+.hslide-bg{width:100%;height:100%;object-fit:cover;filter:brightness(.42)}
+.hovl{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.88) 0%,rgba(0,0,0,.38) 55%,transparent 100%)}
+.hcontent{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(22px,6vw,80px);z-index:3;max-width:660px}
+.h-eye{font-size:11px;letter-spacing:5px;color:var(--accent);text-transform:uppercase;margin-bottom:12px;font-weight:700;opacity:0;transform:translateY(18px);transition:opacity .6s .2s,transform .6s .2s}
+.hslide.act .h-eye{opacity:1;transform:translateY(0)}
+.h-ttl{font-family:'Playfair Display',serif;font-size:clamp(26px,6vw,60px);font-weight:900;line-height:1.1;margin-bottom:14px;opacity:0;transform:translateY(22px);transition:opacity .6s .35s,transform .6s .35s}
+.hslide.act .h-ttl{opacity:1;transform:translateY(0)}
+.h-ttl span{color:var(--accent)}
+.h-dsc{color:rgba(240,236,228,.7);font-size:clamp(13px,1.8vw,15px);max-width:400px;line-height:1.7;margin-bottom:26px;opacity:0;transform:translateY(18px);transition:opacity .6s .5s,transform .6s .5s}
+.hslide.act .h-dsc{opacity:1;transform:translateY(0)}
+.h-act{display:flex;gap:10px;flex-wrap:wrap;opacity:0;transform:translateY(14px);transition:opacity .6s .64s,transform .6s .64s}
+.hslide.act .h-act{opacity:1;transform:translateY(0)}
+.btn-fire{padding:12px 26px;background:linear-gradient(135deg,var(--ember),var(--accent));color:#fff;border:none;border-radius:var(--r);font-weight:700;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:var(--tr);box-shadow:0 4px 18px rgba(255,106,0,.38)}
+.btn-fire:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,106,0,.55)}
+.btn-ghost{padding:12px 26px;background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.28);border-radius:var(--r);font-weight:600;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:var(--tr)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.h-arr{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:44px;height:44px;background:rgba(17,17,17,.8);border:1px solid var(--bdr);color:var(--text);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;transition:var(--tr);backdrop-filter:blur(8px)}
+.h-arr:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+.h-arr.lft{left:18px}.h-arr.rgt{right:18px}
+.h-dots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10}
+.hdot{width:10px;height:10px;border-radius:50%;border:2px solid rgba(255,255,255,.35);background:transparent;cursor:pointer;transition:var(--tr)}
+.hdot.act{background:var(--accent);border-color:var(--accent);box-shadow:0 0 10px rgba(255,106,0,.6)}
+.h-prog{position:absolute;bottom:0;left:0;width:100%;height:3px;background:rgba(255,255,255,.07);z-index:10}
+#hpb{height:100%;background:linear-gradient(90deg,var(--ember),var(--accent));width:0}
+/* Ember particles */
+.emb-wrap{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+@keyframes emb{0%{transform:translateY(0) translateX(0) scale(1);opacity:.8}50%{transform:translateY(-38vh) translateX(18px) scale(.55);opacity:.45}100%{transform:translateY(-78vh) translateX(-8px) scale(.15);opacity:0}}
+.ep{position:absolute;bottom:0;width:4px;height:4px;border-radius:50%;background:var(--accent);animation:emb linear infinite;box-shadow:0 0 6px var(--accent)}
+
+/* =================================================================
+   SEARCH
+================================================================= */
+#srch-sec{background:var(--surf);border-bottom:1px solid var(--bdr);padding:22px 0 16px;display:none}
+.srch-wrap{position:relative;max-width:540px;margin:0 auto}
+.srch-wrap>i{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px;pointer-events:none}
+#srch-inp{width:100%;padding:13px 20px 13px 46px;background:var(--surf2);border:1px solid var(--bdr);border-radius:40px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;transition:var(--tr);outline:none}
+#srch-inp::placeholder{color:var(--muted)}
+#srch-inp:focus{border-color:var(--accent);box-shadow:var(--glow-sm)}
+.srch-clr{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:var(--muted);cursor:pointer;display:none}
+#srch-inp:not(:placeholder-shown)~.srch-clr{display:block}
+
+/* =================================================================
+   SECTIONS SHARED
+================================================================= */
+.sec-hd{font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,34px);font-weight:700;margin-bottom:6px}
+.sec-hd span{color:var(--accent)}
+.sec-sub{color:var(--muted);font-size:14px;margin-bottom:28px}
+.flm-div{text-align:center;font-size:18px;color:var(--accent);margin-bottom:12px;letter-spacing:12px;opacity:.5}
+
+/* =================================================================
+   DEALS
+================================================================= */
+#deals{padding:48px 0}
+.deal-card{border-radius:var(--rc);overflow:hidden;position:relative;height:174px;cursor:pointer;transition:transform var(--tr),box-shadow var(--tr)}
+.deal-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(255,106,0,.2)}
+.dc-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.5);transition:transform .6s}
+.deal-card:hover .dc-bg{transform:scale(1.06)}
+.dc-ovl{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,44,0,.68) 0%,rgba(0,0,0,.25) 100%)}
+.dc-cnt{position:relative;z-index:2;padding:18px;height:100%;display:flex;flex-direction:column;justify-content:flex-end}
+.dc-tag{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--accent2);margin-bottom:5px}
+.dc-ttl{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;line-height:1.2}
+.dc-sub{font-size:12px;color:rgba(255,255,255,.68);margin-top:3px}
+
+/* =================================================================
+   3D BOOK MENU
+================================================================= */
+#menu-sec{padding:50px 0 80px}
+.book-grid{display:flex;flex-wrap:wrap;gap:40px;justify-content:center;}
+
+.book {
+  position: relative;
+  width: 290px;
+  height: 410px;
+  perspective: 2000px;
+  margin-bottom: 20px;
+}
+
+.cover {
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  transform-origin: left;
+  transition: 0.8s cubic-bezier(0.15, 0, 0.3, 1);
+  z-index: 2;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--bdr);
+  background: var(--surf2);
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+  transition: 0.5s ease;
+}
+
+.cover-ttl {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+  z-index: 3;
+  display:none;
+}
+.cover:hover .cover-ttl { opacity:1; }
+
+.book:hover .cover,
+.book:focus-within .cover {
+  transform: rotateY(-110deg);
+}
+
+.book:hover .cover img {
+  filter: brightness(1);
+}
+
+.menu-content {
+  width: 100%;
+  height: 100%;
+  background: var(--surf2);
+  border-radius: 15px;
+  padding: 15px;
+  overflow-y: auto;
+  border: 1px solid var(--bdr);
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.menu-content::-webkit-scrollbar{width:4px}
+.menu-content::-webkit-scrollbar-track{background:rgba(0,0,0,0.3)}
+.menu-content::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
+
+.menu-content h5 {
+  color: var(--accent);
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  text-align: center;
+  border-bottom: 1px solid var(--bdr);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.mrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--bdr);
+  padding-bottom: 10px;
+  transition: background 0.2s;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.mrow:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.mrow-l {
+  flex: 1;
+  padding-right: 8px;
+}
+
+.mrow-n {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.mrow-p {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.act-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.bs-tag {
+  display: inline-block;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(255,106,0,.15);
+  color: var(--accent);
+  border-radius: 4px;
+  padding: 1px 4px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.add-b {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--accent);
+  border: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--tr);
+  line-height: 1;
+}
+.add-b:hover{transform:scale(1.15);box-shadow:var(--glow-sm)}
+
+.wish-b {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px;
+  transition: color 0.3s;
+}
+.wish-b.on { color: var(--danger); }
+.wish-b:hover { transform: scale(1.1); }
+
+/* =================================================================
+   SEARCH RESULTS
+================================================================= */
+#srch-res{display:none;padding:36px 0 80px}
+.sr-item{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid var(--bdr)}
+.sr-img{width:54px;height:54px;object-fit:cover;border-radius:10px;flex-shrink:0}
+.sr-info{flex:1}
+.sr-nm{font-weight:700;font-size:14px}
+.sr-cat{font-size:12px;color:var(--muted)}
+.sr-pr{font-weight:700;color:var(--accent);font-size:14px}
+
+/* =================================================================
+   PRODUCT MODAL
+================================================================= */
+.m-ovl{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(7px);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
+.m-ovl.open{display:flex}
+.m-box{background:var(--surf);border:1px solid var(--bdr);border-radius:20px;max-width:470px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:mIn .3s cubic-bezier(.34,1.56,.64,1);position:relative}
+@keyframes mIn{from{transform:scale(.88) translateY(18px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.m-img{width:100%;height:210px;object-fit:cover;border-radius:20px 20px 0 0}
+.m-body{padding:20px}
+.m-pr-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.m-ttl{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;max-width:68%}
+.m-pr{font-size:19px;font-weight:800;color:var(--accent)}
+.m-dsc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.qty-ctl{display:flex;align-items:center;gap:14px;background:var(--surf2);border-radius:var(--r);padding:8px 14px;width:fit-content;margin-bottom:18px}
+.qty-b{width:30px;height:30px;border-radius:8px;background:var(--accent);border:none;color:#000;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--tr)}
+.qty-b:hover{transform:scale(1.12)}
+.qty-v{font-size:17px;font-weight:700;min-width:26px;text-align:center}
+.m-add{width:100%;padding:13px;background:linear-gradient(135deg,var(--ember),var(--accent));border:none;border-radius:var(--r);color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:var(--tr)}
+.m-add:hover{transform:translateY(-2px);box-shadow:var(--glow)}
+.m-cls{position:absolute;top:12px;right:12px;width:32px;height:32px;background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;z-index:10}
+
+/* =================================================================
+   TESTIMONIALS (OWL)
+================================================================= */
+#testi{padding:52px 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+
+.tsti-card{
+  background: var(--surf2);
+  border: 1px solid var(--bdr);
+  border-radius: var(--rc);
+  padding: 26px;
+  margin: 10px;
+  height: 100%;
+}
+.tsti-stars{color:var(--gold);font-size:13px;margin-bottom:12px}
+.tsti-txt{font-size:14px;color:rgba(240,236,228,.8);line-height:1.75;font-style:italic;margin-bottom:18px}
+.tsti-auth{display:flex;align-items:center;gap:12px}
+.tsti-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--ember),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#fff;box-shadow: var(--glow-sm)}
+.tsti-nm{font-weight:700;font-size:14px;color: var(--text)}
+.tsti-rl{font-size:12px;color:var(--muted)}
+
+.owl-theme .owl-dots .owl-dot span {
+  width: 10px; height: 10px; background: var(--bdr); margin: 5px 4px; transition: var(--tr);
+}
+.owl-theme .owl-dots .owl-dot.active span, 
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: var(--accent); width: 24px;
+}
+
+/* =================================================================
+   CART DRAWER
+================================================================= */
+.cart-bg{position:fixed;inset:0;background:rgba(0,0,0,.52);backdrop-filter:blur(4px);z-index:1500;opacity:0;pointer-events:none;transition:opacity .3s}
+.cart-bg.open{opacity:1;pointer-events:all}
+#cart-drw{position:fixed;top:0;right:-110%;width:min(420px,100%);height:100vh;background:var(--surf);border-left:1px solid var(--bdr);z-index:1600;display:flex;flex-direction:column;transition:right .4s cubic-bezier(.4,0,.2,1)}
+#cart-drw.open{right:0}
+.cart-hd{padding:18px 20px;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
+.cart-hd h3{font-family:'Playfair Display',serif;font-size:21px;color:var(--accent)}
+.cart-bd{flex:1;overflow-y:auto;padding:14px 18px}
+.cart-bd::-webkit-scrollbar{width:3px}
+.cart-bd::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
+.cart-empty{text-align:center;padding:56px 20px;color:var(--muted)}
+.cart-empty i{font-size:50px;margin-bottom:14px;opacity:.28}
+.ci-row{display:flex;gap:11px;padding:13px 0;border-bottom:1px solid var(--bdr)}
+.ci-img{width:58px;height:58px;object-fit:cover;border-radius:9px;flex-shrink:0}
+.ci-info{flex:1}
+.ci-nm{font-size:13px;font-weight:700;margin-bottom:3px}
+.ci-pr{font-size:13px;color:var(--accent);font-weight:700}
+.ci-ctrl{display:flex;align-items:center;gap:7px;margin-top:7px}
+.cq-b{width:25px;height:25px;border-radius:6px;background:var(--surf2);border:1px solid var(--bdr);color:var(--text);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--tr)}
+.cq-b:hover{border-color:var(--accent);color:var(--accent)}
+.cq-v{font-size:13px;font-weight:700;min-width:18px;text-align:center}
+.ci-rm{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:14px;transition:color var(--tr);margin-left:auto}
+.ci-rm:hover{color:var(--danger)}
+.cart-ft{padding:18px 20px;border-top:1px solid var(--bdr)}
+.cart-srow{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:7px}
+.cart-trow{display:flex;justify-content:space-between;font-size:17px;font-weight:800;color:var(--accent);padding:11px 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);margin-bottom:14px}
+.cart-co{width:100%;padding:14px;background:linear-gradient(135deg,var(--ember),var(--accent));border:none;border-radius:var(--r);color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:var(--tr)}
+.cart-co:hover{box-shadow:var(--glow);transform:translateY(-1px)}
+
+/* =================================================================
+   WISHLIST DRAWER (SLIDES FROM LEFT)
+================================================================= */
+.wish-bg{position:fixed;inset:0;background:rgba(0,0,0,.52);backdrop-filter:blur(4px);z-index:1500;opacity:0;pointer-events:none;transition:opacity .3s}
+.wish-bg.open{opacity:1;pointer-events:all}
+#wish-drw{position:fixed;top:0;left:-110%;width:min(420px,100%);height:100vh;background:var(--surf);border-right:1px solid var(--bdr);z-index:1600;display:flex;flex-direction:column;transition:left .4s cubic-bezier(.4,0,.2,1)}
+#wish-drw.open{left:0}
+.wish-hd{padding:18px 20px;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
+.wish-hd h3{font-family:'Playfair Display',serif;font-size:21px;color:var(--danger)}
+.wish-bd{flex:1;overflow-y:auto;padding:14px 18px}
+.wish-bd::-webkit-scrollbar{width:3px}
+.wish-bd::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
+.wish-empty{text-align:center;padding:56px 20px;color:var(--muted)}
+.wish-empty i{font-size:50px;margin-bottom:14px;opacity:.28}
+.wi-row{display:flex;gap:11px;padding:13px 0;border-bottom:1px solid var(--bdr)}
+.wi-img{width:58px;height:58px;object-fit:cover;border-radius:9px;flex-shrink:0}
+.wi-info{flex:1}
+.wi-nm{font-size:13px;font-weight:700;margin-bottom:3px}
+.wi-pr{font-size:13px;color:var(--accent);font-weight:700}
+.wi-btn{display:flex;gap:6px;margin-top:8px}
+.wi-add{flex:1;padding:7px 12px;background:var(--accent);border:none;border-radius:8px;color:#000;font-size:12px;font-weight:700;cursor:pointer;transition:var(--tr)}
+.wi-add:hover{transform:translateY(-1px);box-shadow:var(--glow-sm)}
+.wi-rm{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:14px;transition:color var(--tr);padding:6px}
+.wi-rm:hover{color:var(--danger)}
+
+/* =================================================================
+   AUTH MODAL
+================================================================= */
+#auth-m{position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);z-index:2500;display:none;align-items:center;justify-content:center;padding:20px}
+#auth-m.open{display:flex}
+.auth-box{background:var(--surf);border:1px solid var(--bdr);border-radius:20px;max-width:415px;width:100%;padding:34px;position:relative;animation:mIn .35s cubic-bezier(.34,1.56,.64,1)}
+.auth-logo-t{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--accent);letter-spacing:2px;text-align:center}
+.auth-logo-s{font-size:11px;color:var(--muted);letter-spacing:3px;text-align:center;margin-top:2px;margin-bottom:24px}
+.auth-tabs{display:flex;background:var(--surf2);border-radius:11px;padding:4px;margin-bottom:24px}
+.atab{flex:1;padding:10px;border:none;background:transparent;border-radius:9px;color:var(--muted);font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:var(--tr)}
+.atab.act{background:var(--accent);color:#000}
+.aform{display:none}
+.aform.act{display:block}
+.albl{display:block;font-size:11px;font-weight:800;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:5px}
+.ainp{width:100%;padding:11px 15px;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--r);color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;transition:var(--tr);outline:none;margin-bottom:14px}
+.ainp:focus{border-color:var(--accent);box-shadow:var(--glow-sm)}
+.ainp-wrap{position:relative;margin-bottom:14px}
+.ainp-wrap .ainp{padding-right:42px;margin-bottom:0}
+.pw-tog{position:absolute;right:13px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:13px}
+.aerr{background:rgba(255,71,87,.1);border:1px solid rgba(255,71,87,.3);color:var(--danger);border-radius:var(--r);padding:9px 13px;font-size:13px;margin-bottom:14px;display:none}
+.aerr.on{display:block}
+.asuc{background:rgba(62,207,142,.1);border:1px solid rgba(62,207,142,.3);color:var(--success);border-radius:var(--r);padding:9px 13px;font-size:13px;margin-bottom:14px;display:none}
+.asuc.on{display:block}
+.a-sub{width:100%;padding:13px;background:linear-gradient(135deg,var(--ember),var(--accent));border:none;border-radius:var(--r);color:#fff;font-weight:700;font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:var(--tr);margin-top:4px}
+.a-sub:hover{box-shadow:var(--glow);transform:translateY(-1px)}
+
+/* =================================================================
+   INFO MODAL
+================================================================= */
+.info-box{background:var(--surf);border:1px solid var(--bdr);border-radius:20px;max-width:370px;width:100%;padding:26px;position:relative;animation:mIn .3s ease}
+.info-ttl{font-family:'Playfair Display',serif;font-size:19px;color:var(--accent);margin-bottom:14px}
+.info-row{display:flex;align-items:center;gap:11px;margin-bottom:11px;font-weight:600}
+
+/* =================================================================
+   FOOTER
+================================================================= */
+#ftr{background:var(--surf);border-top:1px solid var(--bdr);padding:60px 0 0}
+.ftr-brand{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:var(--accent);letter-spacing:2px;margin-bottom:9px}
+.ftr-tag{font-size:13px;color:var(--muted);line-height:1.72;max-width:250px;margin-bottom:18px}
+.soc-icons{display:flex;gap:9px}
+.soc-ic{width:36px;height:36px;border-radius:9px;background:var(--surf2);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:var(--tr);cursor:pointer}
+.soc-ic:hover{background:var(--accent);color:#000;border-color:var(--accent);transform:translateY(-2px)}
+.fc-ttl{font-weight:800;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.flinks{list-style:none}
+.flinks li{margin-bottom:9px}
+.flinks a{color:var(--muted);font-size:14px;transition:color var(--tr)}
+.flinks a:hover{color:var(--text)}
+.fhour{display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px;color:var(--muted)}
+.fhour span:last-child{color:var(--text);font-weight:600}
+.fctc{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--muted);margin-bottom:9px}
+.fctc i{color:var(--accent)}
+.ftr-bot{border-top:1px solid var(--bdr);padding:18px;text-align:center;font-size:12px;color:var(--muted);margin-top:36px}
+
+/* =================================================================
+   SCROLL TOP
+================================================================= */
+#st-btn{position:fixed;bottom:28px;right:22px;width:44px;height:44px;background:linear-gradient(135deg,var(--ember),var(--accent));border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:800;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;box-shadow:var(--glow);color:#fff;font-size:15px;border:none}
+#st-btn.vis{opacity:1;pointer-events:all}
+#st-btn:hover{transform:translateY(-3px)}
+
+/* =================================================================
+   REVEAL
+================================================================= */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.rv.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.18s}.d3{transition-delay:.26s}.d4{transition-delay:.34s}
+
+/* =================================================================
+   TOAST
+================================================================= */
+#toast-wrap{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:5000;display:flex;flex-direction:column;gap:7px;pointer-events:none}
+.toast-i{background:var(--surf);border:1px solid var(--bdr);border-left:3px solid var(--accent);color:var(--text);padding:11px 18px;border-radius:11px;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:0 8px 22px rgba(0,0,0,.42);animation:tIn .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes tIn{from{transform:translateY(18px) scale(.9);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+.toast-i.rm{animation:tOut .3s ease forwards}
+@keyframes tOut{to{transform:translateY(8px);opacity:0}}
+
+/* =================================================================
+   RESPONSIVE
+================================================================= */
+@media(max-width:768px){
+  .hdr-inner{grid-template-columns:1fr auto;grid-template-rows:auto auto;padding:8px 12px;gap:6px}
+  .hdr-left{grid-column:1/2;grid-row:1}
+  .hdr-brand{grid-column:1/2;grid-row:2;text-align:left}
+  .hdr-right{grid-column:2/3;grid-row:1/3;align-items:flex-start;padding-top:2px}
+  .hpill-txt{display:none}
+  #cnav{top:88px}
+  .book-grid{gap:20px}
+  .book{width: 100%; max-width: 320px;}
+}
+@media(max-width:480px){
+  .h-arr{display:none}
+  .h-ttl{font-size:clamp(22px,8vw,34px)}
+}
+</style>
+</head>
+<body>
+<div id="ls">
+  <div class="ls-brand">GRILL HOUSE</div>
+  <div class="ls-bar-bg"><div class="ls-bar"></div></div>
+  <div class="ls-sub">Flame-Crafted Perfection</div>
+</div>
+
+<header id="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-left">
+      <div class="hpill" id="loc-pill" tabindex="0" role="button" aria-label="Location" data-type="location" data-val="North Karachi, Block 10-A, Karachi">
+        <i class="fa-solid fa-location-dot"></i><span class="hpill-txt">North Karachi</span>
+      </div>
+      <div class="hpill" id="ph-pill" tabindex="0" role="button" aria-label="Phone" data-type="phone" data-val="+92 332 6193848">
+        <i class="fa-solid fa-phone"></i><span class="hpill-txt">+92 332 6193848</span>
+      </div>
+    </div>
+    <div class="hdr-brand">
+      <div class="brand-name">GRILL HOUSE</div>
+      <div class="brand-sub">Premium Dining</div>
+    </div>
+    <div class="hdr-right">
+      <button class="ibtn" id="srch-tog" aria-label="Search"><i class="fa-solid fa-search"></i></button>
+      <div style="position:relative">
+        <button class="ibtn" id="login-btn" aria-label="Login"><i class="fa-regular fa-user"></i></button>
+        <button class="u-avatar" id="u-av" style="display:none" aria-label="User menu"></button>
+        <div class="u-drop" id="u-drop">
+          <div class="udrop-row" id="dp-profile"><i class="fa-solid fa-user"></i> My Profile</div>
+          <div class="udrop-row" id="dp-orders"><i class="fa-solid fa-receipt"></i> My Orders</div>
+          <div class="udrop-row dng" id="dp-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</div>
+        </div>
+      </div>
+      <button class="ibtn" id="wish-btn" aria-label="Wishlist">
+        <i class="fa-regular fa-heart"></i>
+        <span class="wbadge" id="wbadge" style="display:none">0</span>
+      </button>
+      <button class="ibtn" id="cart-btn" aria-label="Cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cbadge" id="cbadge" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav id="cnav" aria-label="Categories">
+  <div class="cnav-inner">
+    <button class="cnav-arr" id="cat-prev" aria-label="Scroll left"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="cnav-track" id="cat-track"></div>
+    <button class="cnav-arr" id="cat-next" aria-label="Scroll right"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+</nav>
+
+<section id="hero" aria-label="Featured dishes">
+  <div id="h-track"></div>
+  <div class="emb-wrap" id="emb-wrap"></div>
+  <button class="h-arr lft" id="h-prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="h-arr rgt" id="h-next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="h-dots" id="h-dots"></div>
+  <div class="h-prog"><div id="hpb"></div></div>
+</section>
+
+<div id="srch-sec">
+  <div class="container">
+    <div class="srch-wrap">
+      <i class="fa-solid fa-search"></i>
+      <input type="text" id="srch-inp" placeholder="Search burgers, BBQ, steaks…" autocomplete="off"/>
+      <button class="srch-clr" id="srch-clr" aria-label="Clear"><i class="fa-solid fa-times"></i></button>
+    </div>
+  </div>
+</div>
+
+<section id="deals">
+  <div class="container">
+    <div class="rv"><div class="flm-div">🔥 🔥 🔥</div>
+    <h2 class="sec-hd fd">Today's <span>Hot Deals</span></h2>
+    <p class="sec-sub">Exclusive offers · Limited time only</p></div>
+    <div class="row g-3" id="deals-grid"></div>
+  </div>
+</section>
+
+<section id="menu-sec">
+  <div class="container">
+    <div class="rv text-center mb-5">
+      <div class="flm-div">🔥 🔥 🔥</div>
+      <h2 class="sec-hd fd">Our <span>Menu</span></h2>
+      <p class="sec-sub">Hover (or tap) a card to open the book</p>
+    </div>
+    <div id="srch-res"><h3 class="fd mb-3" style="color:var(--accent)">Search Results</h3><div id="srch-list"></div></div>
+    
+    <div class="book-grid" id="menu-grid"></div>
+  </div>
+</section>
+
+<section id="testi">
+  <div class="container">
+    <div class="rv text-center mb-5">
+      <h2 class="sec-hd fd">What <span>People Say</span></h2>
+      <p class="sec-sub">Real reviews from our valued customers</p>
+    </div>
+    
+    <div class="owl-carousel owl-theme" id="reviews-carousel"></div>
+  </div>
+</section>
+
+<footer id="ftr">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="ftr-brand">GRILL HOUSE</div>
+        <p class="ftr-tag">North Karachi's finest flame-crafted cuisine since 2018. Every bite is a story of passion and fire.</p>
+        <div class="soc-icons">
+          <a class="soc-ic" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a class="soc-ic" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="soc-ic" href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a class="soc-ic" href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="soc-ic" href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-6">
+        <div class="fc-ttl">Quick Links</div>
+        <ul class="flinks">
+          <li><a href="#">Home</a></li>
+          <li><a href="#menu-sec">Menu</a></li>
+          <li><a href="#deals">Deals</a></li>
+          <li><a href="#testi">Reviews</a></li>
+          <li><a href="#">Reservations</a></li>
+          <li><a href="#">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 col-6">
+        <div class="fc-ttl">Popular</div>
+        <ul class="flinks">
+          <li><a href="#">BBQ Platters</a></li>
+          <li><a href="#">Grill Specials</a></li>
+          <li><a href="#">Steaks</a></li>
+          <li><a href="#">Burgers</a></li>
+          <li><a href="#">Family Packs</a></li>
+          <li><a href="#">Desserts</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="fc-ttl">Contact Us</div>
+        <div class="fctc"><i class="fa-solid fa-location-dot"></i><span>North Karachi, Block 10-A, Karachi</span></div>
+        <div class="fctc"><i class="fa-solid fa-phone"></i><span>+92 332 6193848</span></div>
+        <div class="fctc"><i class="fa-solid fa-envelope"></i><span>orders@grillhouse.pk</span></div>
+        <div class="fctc"><i class="fa-brands fa-whatsapp"></i><span>+92 332 6193848</span></div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <div class="fc-ttl">Hours</div>
+        <div class="fhour"><span>Mon–Thu</span><span>12pm – 1am</span></div>
+        <div class="fhour"><span>Fri–Sat</span><span>12pm – 2am</span></div>
+        <div class="fhour"><span>Sunday</span><span>2pm – 12am</span></div>
+        <div style="margin-top:12px;font-size:12px;color:var(--accent);font-weight:700">🔥 Open Now</div>
+      </div>
+    </div>
+  </div>
+  <div class="ftr-bot">&copy; 2026 Grill House Restaurant · All Rights Reserved · <span style="color:var(--accent)">Made with 🔥 in Karachi</span></div>
+</footer>
+
+<div class="cart-bg" id="cart-bg"></div>
+<aside id="cart-drw" aria-label="Shopping cart">
+  <div class="cart-hd"><h3>Your Order</h3><button class="ibtn" id="cart-cls" aria-label="Close"><i class="fa-solid fa-times"></i></button></div>
+  <div class="cart-bd" id="cart-bd"></div>
+  <div class="cart-ft" id="cart-ft" style="display:none">
+    <div class="cart-srow"><span>Subtotal</span><span id="c-sub">Rs. 0</span></div>
+    <div class="cart-srow"><span>Tax (5%)</span><span id="c-tax">Rs. 0</span></div>
+    <div class="cart-trow"><span>Total</span><span id="c-tot">Rs. 0</span></div>
+    <button class="cart-co" id="cart-co"><i class="fa-brands fa-whatsapp" style="margin-right:6px"></i>Order via WhatsApp</button>
+  </div>
+</aside>
+
+<div class="wish-bg" id="wish-bg"></div>
+<aside id="wish-drw" aria-label="Wishlist">
+  <div class="wish-hd"><h3>❤️ My Wishlist</h3><button class="ibtn" id="wish-cls" aria-label="Close"><i class="fa-solid fa-times"></i></button></div>
+  <div class="wish-bd" id="wish-bd"></div>
+</aside>
+
+<div class="m-ovl" id="auth-m">
+  <div class="auth-box">
+    <button class="m-cls" id="auth-cls" aria-label="Close"><i class="fa-solid fa-times"></i></button>
+    <div class="auth-logo-t">GRILL HOUSE</div>
+    <div class="auth-logo-s">Welcome Back</div>
+    <div class="auth-tabs">
+      <button class="atab act" data-tab="lf">Login</button>
+      <button class="atab" data-tab="sf">Sign Up</button>
+    </div>
+    <div class="aform act" id="lf">
+      <div class="aerr" id="l-err"></div>
+      <div class="asuc" id="l-suc"></div>
+      <label class="albl">Email</label>
+      <input class="ainp" type="email" id="l-em" placeholder="you@example.com"/>
+      <label class="albl">Password</label>
+      <div class="ainp-wrap">
+        <input class="ainp" type="password" id="l-pw" placeholder="Your password"/>
+        <button class="pw-tog" data-tgt="l-pw" type="button"><i class="fa-regular fa-eye"></i></button>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+        <input type="checkbox" id="l-rem" style="accent-color:var(--accent)"/>
+        <label for="l-rem" style="font-size:13px;cursor:pointer">Remember me</label>
+      </div>
+      <button class="a-sub" id="l-go">Login to Grill House</button>
+    </div>
+    <div class="aform" id="sf">
+      <div class="aerr" id="s-err"></div>
+      <div class="asuc" id="s-suc"></div>
+      <label class="albl">Full Name</label>
+      <input class="ainp" type="text" id="s-nm" placeholder="Your full name"/>
+      <label class="albl">Email</label>
+      <input class="ainp" type="email" id="s-em" placeholder="you@example.com"/>
+      <label class="albl">Phone</label>
+      <input class="ainp" type="tel" id="s-ph" placeholder="+92 300 1234567"/>
+      <label class="albl">Password</label>
+      <div class="ainp-wrap">
+        <input class="ainp" type="password" id="s-pw" placeholder="Min 6 characters"/>
+        <button class="pw-tog" data-tgt="s-pw" type="button"><i class="fa-regular fa-eye"></i></button>
+      </div>
+      <label class="albl">Confirm Password</label>
+      <div class="ainp-wrap" style="margin-bottom:18px">
+        <input class="ainp" type="password" id="s-cpw" placeholder="Repeat password"/>
+        <button class="pw-tog" data-tgt="s-cpw" type="button"><i class="fa-regular fa-eye"></i></button>
+      </div>
+      <button class="a-sub" id="s-go">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<div class="m-ovl" id="info-m">
+  <div class="info-box">
+    <button class="m-cls" id="info-cls" aria-label="Close"><i class="fa-solid fa-times"></i></button>
+    <div class="info-ttl fd" id="info-ttl">Info</div>
+    <div id="info-body"></div>
+  </div>
+</div>
+
+<div class="m-ovl" id="prod-m">
+  <div class="m-box">
+    <button class="m-cls" id="pm-cls" aria-label="Close"><i class="fa-solid fa-times"></i></button>
+    <img id="pm-img" src="" alt="" class="m-img" loading="lazy"/>
+    <div class="m-body">
+      <div class="m-pr-row"><div class="m-ttl fd" id="pm-ttl"></div><div class="m-pr" id="pm-pr"></div></div>
+      <p class="m-dsc" id="pm-dsc"></p>
+      <div class="qty-ctl">
+        <button class="qty-b" id="pm-dn">−</button>
+        <span class="qty-v" id="pm-qv">1</span>
+        <button class="qty-b" id="pm-up">+</button>
+      </div>
+      <button class="m-add" id="pm-add"><i class="fa-solid fa-bag-shopping" style="margin-right:7px"></i>Add to Order</button>
+    </div>
+  </div>
+</div>
+
+<button id="st-btn" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+<div id="toast-wrap"></div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+/* ================================================================
+   DATA (UPDATED WITH LOCAL IMAGES)
+================================================================ */
+// Helper to generate Placeholder IF local image fails
+const PH = (c,t) => `https://placehold.co/600x400/${c}/fff?text=${encodeURIComponent(t)}`;
+
+const heroSlides = [
+  { eye:'Signature Collection', ttl:'Flame-Kissed <span>Perfection</span>', dsc:'Hand-selected cuts grilled over real charcoal flames. An experience your taste buds will never forget.', c1:'Order Now', c2:'See Menu', img:'images/slide1.jpg', col:'1a0500' },
+  { eye:'BBQ Platters',         ttl:'The <span>Grand</span> BBQ Platter',   dsc:'Tikka, seekh kabab, malai boti, reshmi kabab — all on one sizzling plate. Built for sharing.', c1:'Order Platter', c2:'View Deals', img:'images/slide2.jpg', col:'150300' },
+  { eye:'Premium Cuts',         ttl:'Steak Done <span>Right</span>',        dsc:'Ribeye, T-Bone, and Sirloin aged to perfection. Served with truffle butter and roasted vegetables.', c1:'See Steaks', c2:'Book Table', img:'images/slide3.jpg', col:'100000' },
+  { eye:'Loaded Burgers',       ttl:'Stack It <span>High</span>',           dsc:'16 Zinger varieties — crispy, spicy, cheesy — crafted fresh every single order.', c1:'Build Burger', c2:'Full Menu', img:'images/slide4.jpg', col:'0f0800' },
+];
+
+const deals = [
+  { tag:'Combo Deal',  ttl:'BBQ Fiesta Combo',       sub:'Tikka + Seekh + Naan + Drink · Rs. 1,499', col:'1e0800' },
+  { tag:'Happy Hour',  ttl:'Burger + Fries + Drink', sub:'Any Zinger + Side + Beverage · Rs. 799',   col:'160400' },
+  { tag:'Family Pack', ttl:'Family BBQ Platter',     sub:'Feeds 4 people · Full spread · Rs. 3,499', col:'0c0a00' },
+  { tag:'Late Night',  ttl:'Midnight Steak Special', sub:'10pm–2am · 400g Ribeye + Sides · Rs. 2,199',col:'080810' },
+];
+
+const catMeta = {
+  all:      { lbl:'ALL MENU', col:'1a0a00' },
+  burgers:  { lbl:'Burgers',  col:'200800' },
+  bbq:      { lbl:'BBQ',      col:'1c0500' },
+  pizza:    { lbl:'Pizza',    col:'1a0800' },
+  steaks:   { lbl:'Steaks',   col:'150000' },
+  wraps:    { lbl:'Wraps',    col:'0f0a00' },
+  sandwich: { lbl:'Sandwiches',col:'0d0800'},
+  wings:    { lbl:'Wings',    col:'1a0600' },
+  rice:     { lbl:'Rice',     col:'0a0d00' },
+  pasta:    { lbl:'Pasta',    col:'0a0800' },
+  seafood:  { lbl:'Seafood',  col:'000d10' },
+  desi:     { lbl:'Desi',     col:'100800' },
+  sides:    { lbl:'Sides',    col:'0a0a00' },
+  salad:    { lbl:'Salads',   col:'080d00' },
+  dessert:  { lbl:'Desserts', col:'100010' },
+  drinks:   { lbl:'Drinks',   col:'000a10' },
+  platters: { lbl:'Platters', col:'180a00' },
+  specials: { lbl:'Specials', col:'1a0000' },
+  kids:     { lbl:'Kids',     col:'0a0a10' },
+};
+
+const menuData = {
+  burgers:  [
+    {n:'Classic Zinger',          p:450, b:true },
+    {n:'Crispy Chicken Zinger',   p:480           },
+    {n:'Spicy Zinger',            p:480           },
+    {n:'Zinger with Cheese',      p:510           },
+    {n:'Double Patty Zinger',     p:620, b:true   },
+    {n:'Jumbo Zinger',            p:560           },
+    {n:'Peri Peri Zinger',        p:490           },
+    {n:'Jalapeño Zinger',         p:490           },
+    {n:'Garlic Mayo Zinger',      p:470           },
+    {n:'Fiery Zinger',            p:500, b:true   },
+    {n:'Cheese Lava Zinger',      p:530           },
+    {n:'Zinger Supreme',          p:580           },
+  ],
+  bbq: [
+    {n:'Chicken Tikka (Chest)',   p:650, b:true   },
+    {n:'Chicken Tikka (Leg)',     p:620           },
+    {n:'Malai Boti',              p:700, b:true   },
+    {n:'Chicken Boti',            p:600           },
+    {n:'Behari Boti',             p:680           },
+    {n:'Beef Boti',               p:720           },
+    {n:'Seekh Kabab',             p:580           },
+    {n:'Beef Seekh Kabab',        p:650           },
+    {n:'Reshmi Kabab',            p:700, b:true   },
+    {n:'BBQ Wings',               p:550           },
+    {n:'Tandoori Chicken',        p:750           },
+    {n:'Afghani Boti',            p:730           },
+  ],
+  pizza: [
+    {n:'Margherita',              p:850           },
+    {n:'Pepperoni',               p:950           },
+    {n:'Cheese Lover',            p:920, b:true   },
+    {n:'BBQ Chicken',             p:980           },
+    {n:'Chicken Fajita',          p:1000          },
+    {n:'Chicken Tikka',           p:980, b:true   },
+    {n:'Supreme',                 p:1050          },
+    {n:'Meat Lovers',             p:1100, b:true  },
+    {n:'Spicy Peri Peri',         p:980           },
+    {n:'Zinger Pizza',            p:960           },
+  ],
+  steaks: [
+    {n:'Ribeye Steak',            p:2800, b:true  },
+    {n:'T-Bone',                  p:3200, b:true  },
+    {n:'Sirloin',                 p:2500          },
+    {n:'Pepper Steak',            p:2600          },
+    {n:'Mushroom Steak',          p:2400          },
+    {n:'Mexican Steak',           p:2700          },
+    {n:'Hawaiian Steak',          p:2600          },
+    {n:'Twin Steak',              p:4200, b:true  },
+  ],
+  wraps: [
+    {n:'Chicken Wrap',            p:380           },
+    {n:'Beef Wrap',               p:420           },
+    {n:'BBQ Wrap',                p:450           },
+    {n:'Spicy Garlic Wrap',       p:390           },
+    {n:'Zinger Wrap',             p:400, b:true   },
+    {n:'Veggie Wrap',             p:320           },
+    {n:'Tikka Wrap',              p:460, b:true   },
+    {n:'Grilled Chicken Wrap',    p:430           },
+  ],
+  sandwich: [
+    {n:'Club Sandwich',           p:420, b:true   },
+    {n:'BBQ Sandwich',            p:450           },
+    {n:'Chicken Mayo',            p:380           },
+    {n:'Grilled Cheese',          p:350           },
+    {n:'Steak Sandwich',          p:550           },
+    {n:'Breakfast Sandwich',      p:370           },
+    {n:'Crispy Chicken Sub',      p:480, b:true   },
+    {n:'Double Decker',           p:520           },
+  ],
+  wings: [
+    {n:'BBQ Wings (6pcs)',        p:550, b:true   },
+    {n:'Hot Wings (6pcs)',        p:580           },
+    {n:'Garlic Parmesan',         p:600           },
+    {n:'Honey Glazed',            p:590           },
+    {n:'Buffalo Wings',           p:570, b:true   },
+    {n:'Thai Sweet Chili',        p:580           },
+    {n:'Smoky Wings',             p:560           },
+    {n:'Party Pack (20pcs)',      p:1600, b:true  },
+  ],
+  rice: [
+    {n:'Chicken Rice',            p:480           },
+    {n:'Egg Fried Rice',          p:380           },
+    {n:'Chinese Rice',            p:420           },
+    {n:'Spicy BBQ Rice',          p:500, b:true   },
+    {n:'Mutton Pulao',            p:650           },
+    {n:'Beef Biryani',            p:580, b:true   },
+    {n:'Chicken Biryani',         p:520           },
+    {n:'Kabuli Pulao',            p:600           },
+  ],
+  pasta: [
+    {n:'Alfredo Pasta',           p:520           },
+    {n:'Penne Arrabbiata',        p:480           },
+    {n:'Creamy Chicken Pasta',    p:560, b:true   },
+    {n:'Mac & Cheese',            p:450           },
+    {n:'Lasagna',                 p:620, b:true   },
+    {n:'Spaghetti Bolognese',     p:540           },
+    {n:'Pink Sauce Pasta',        p:530           },
+    {n:'Garlic Shrimp Pasta',     p:680           },
+  ],
+  seafood: [
+    {n:'Grilled Fish',            p:980           },
+    {n:'Fried Fish',              p:850           },
+    {n:'Prawn Fry',               p:1100, b:true  },
+    {n:'Fish Steak',              p:1200          },
+    {n:'Grilled Lobster',         p:2800, b:true  },
+    {n:'Shrimp Cocktail',         p:900           },
+    {n:'Calamari',                p:1050          },
+    {n:'Seafood Platter',         p:3500, b:true  },
+  ],
+  desi: [
+    {n:'Chicken Karahi',          p:720, b:true   },
+    {n:'Beef Handi',              p:850           },
+    {n:'Mutton Biryani',          p:780           },
+    {n:'Chicken Qorma',           p:680           },
+    {n:'Daal Makhni',             p:450           },
+    {n:'Paneer Reshmi',           p:620           },
+    {n:'Nihari',                  p:750, b:true   },
+    {n:'Paya',                    p:700           },
+  ],
+  sides: [
+    {n:'French Fries',            p:180, b:true   },
+    {n:'Onion Rings',             p:200           },
+    {n:'Garlic Bread',            p:150           },
+    {n:'Coleslaw',                p:130           },
+    {n:'Mashed Potatoes',         p:220           },
+    {n:'Corn on the Cob',         p:160           },
+    {n:'Loaded Fries',            p:320, b:true   },
+    {n:'Wedges',                  p:210           },
+  ],
+  salad: [
+    {n:'Caesar Salad',            p:320, b:true   },
+    {n:'Greek Salad',             p:280           },
+    {n:'Garden Salad',            p:250           },
+    {n:'Russian Salad',           p:270           },
+    {n:'Apple Cabbage Salad',     p:260           },
+    {n:'Grilled Veggie Salad',    p:300           },
+    {n:'Fattoush',                p:280           },
+    {n:'Signature Grill Salad',   p:350, b:true   },
+  ],
+  dessert: [
+    {n:'Chocolate Lava Cake',     p:380, b:true   },
+    {n:'Brownie + Ice Cream',     p:350           },
+    {n:'Cheesecake',              p:420, b:true   },
+    {n:'Gulab Jamun',             p:180           },
+    {n:'Kunafa',                  p:450           },
+    {n:'Ice Cream Platter',       p:380           },
+    {n:'Tiramisu',                p:460           },
+    {n:"Crème Brûlée",            p:490           },
+  ],
+  drinks: [
+    {n:'Mojito',                  p:250, b:true   },
+    {n:'Blue Lagoon',             p:270           },
+    {n:'Strawberry Mojito',       p:260           },
+    {n:'Oreo Shake',              p:300, b:true   },
+    {n:'Chocolate Shake',         p:290           },
+    {n:'Cold Coffee',             p:260           },
+    {n:'Mint Margarita',          p:240           },
+    {n:'Mango Smoothie',          p:270           },
+  ],
+  platters: [
+    {n:'Family BBQ Platter',      p:3499, b:true  },
+    {n:'Mega Grill Platter',      p:4200, b:true  },
+    {n:'Seafood Platter',         p:5200          },
+    {n:'Party Mix Platter',       p:3800          },
+    {n:'Steak Combo Platter',     p:4800          },
+    {n:'Kabab Feast Platter',     p:3200          },
+    {n:'Tikka Extravaganza',      p:3600, b:true  },
+    {n:'Grill House Special',     p:5800, b:true  },
+  ],
+  specials: [
+    {n:'Sizzling Mix Grill',      p:2850, b:true,  dsc:'Tikka, Kabab, and Boti on a sizzling hot plate' },
+    {n:'Royal Beef Steak',        p:3499, b:true,  dsc:'400g prime cut with truffle butter & roasted veg' },
+    {n:'Ocean Feast',             p:5200,          dsc:'Grilled Lobster, Prawns, and Red Snapper' },
+    {n:'Grill House Signature',   p:2200, b:true,  dsc:"Chef's daily creation — changes every day" },
+    {n:'Fire & Smoke Combo',      p:1800,          dsc:'Smoked chicken, grilled beef, charcoal naan' },
+    {n:'Midnight Feast',          p:2600,          dsc:'After-10pm exclusive party platter' },
+  ],
+  kids: [
+    {n:'Kids Burger',             p:320           },
+    {n:'Nuggets & Fries',         p:280, b:true   },
+    {n:'Mini Pizza',              p:350           },
+    {n:'Kids Pasta',              p:280           },
+    {n:'Chicken Popcorn',         p:260, b:true   },
+    {n:'Kids Lunchbox',           p:380           },
+    {n:'Mini Wings (4pcs)',       p:250           },
+    {n:'Happy Meal',              p:420, b:true   },
+  ],
+};
+
+const testimonials = [
+  { nm:'Ahmed R.',   rl:'Food Blogger',    st:5, tx:'Absolutely unreal BBQ! The Malai Boti just melts in your mouth. Grill House is my go-to every Friday night.' },
+  { nm:'Fatima K.',  rl:'Regular Customer',st:5, tx:'Best burgers in North Karachi, no contest. The Fiery Zinger is fire in both senses of the word! 🔥' },
+  { nm:'Bilal M.',   rl:'Verified Buyer',  st:5, tx:'Ordered the Family BBQ Platter for 6 people. Everyone was stuffed and happy. Quality is 5-star level.' },
+  { nm:'Sana T.',    rl:'Foodie',          st:5, tx:'The Ribeye Steak was cooked to absolute perfection. Warm staff, incredible ambiance. A must-visit.' },
+  { nm:'Usman N.',   rl:'Food Critic',     st:5, tx:'In 10 years reviewing Karachi restaurants, the Grill House Special ranks in my top 3. Outstanding.' },
+  { nm:'Zara H.',    rl:'Regular Customer',st:4, tx:'Love the Kunafa and cold coffee combo after a heavy grill meal. A little gem in North Karachi.' },
+];
+
+/* ================================================================
+   STATE
+================================================================ */
+const S = {
+  cart:   JSON.parse(sessionStorage.getItem('gh_cart')  || '[]'),
+  wish:   JSON.parse(localStorage.getItem('gh_wish')    || '[]'),
+  user:   JSON.parse(localStorage.getItem('gh_user')    || 'null'),
+  users:  JSON.parse(localStorage.getItem('gh_users')   || '[]'),
+
+  sc(){ sessionStorage.setItem('gh_cart', JSON.stringify(this.cart)); renderCart(); badge(); },
+  sw(){ localStorage.setItem('gh_wish', JSON.stringify(this.wish)); renderWish(); wishBadge(); },
+  su(){ localStorage.setItem('gh_user', JSON.stringify(this.user)); updateUserUI(); },
+  sus(){ localStorage.setItem('gh_users', JSON.stringify(this.users)); },
+
+  add(item){
+    const e = this.cart.find(i=>i.id===item.id);
+    if(e) e.qty+=item.qty; else this.cart.push({...item});
+    this.sc();
+  },
+  del(id){ this.cart=this.cart.filter(i=>i.id!==id); this.sc(); },
+  upq(id,d){ const i=this.cart.find(x=>x.id===id); if(i){ i.qty=Math.max(1,i.qty+d); this.sc(); } },
+  tw(id){ const x=this.wish.indexOf(id); x===-1?this.wish.push(id):this.wish.splice(x,1); this.sw(); },
+  sub(){ return this.cart.reduce((s,i)=>s+i.price*i.qty,0); },
+  tax(){ return Math.round(this.sub()*.05); },
+  tot(){ return this.sub()+this.tax(); },
+  cnt(){ return this.cart.reduce((s,i)=>s+i.qty,0); },
+  wcnt(){ return this.wish.length; },
+};
+
+/* ================================================================
+   LOADING
+================================================================ */
+document.body.style.overflow='hidden';
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('ls').classList.add('out');
+    document.body.style.overflow='';
+    init();
+  },2400);
+});
+
+/* ================================================================
+   INIT
+================================================================ */
+function init(){
+  buildHero(); buildCatNav(); buildDeals(); buildMenu('all');
+  buildTesti(); setupCart(); setupWishlist(); setupAuth(); setupInfoModal();
+  setupSearch(); setupReveal(); setupScrollTop(); buildEmbers();
+  badge(); wishBadge(); updateUserUI(); renderCart(); renderWish();
+  window.addEventListener('scroll',()=>{
+    const h=document.getElementById('hdr');
+    h.classList.toggle('scrolled',window.scrollY>20);
+    document.getElementById('st-btn').classList.toggle('vis',window.scrollY>400);
+  },{passive:true});
+}
+
+/* ================================================================
+   HERO (UPDATED)
+================================================================ */
+let hIdx=0, hTmr;
+const HD=5600;
+
+function buildHero(){
+  const tr=document.getElementById('h-track');
+  const dt=document.getElementById('h-dots');
+  heroSlides.forEach((s,i)=>{
+    const d=document.createElement('div');
+    d.className='hslide'+(i===0?' act':'');
+    
+    // Updated image source with Error Fallback
+    d.innerHTML=`<img src="${s.img}" alt="${s.eye}" class="hslide-bg" loading="${i===0?'eager':'lazy'}" onerror="this.onerror=null;this.src='${PH(s.col,s.eye)}'"/>
+      <div class="hovl"></div>
+      <div class="hcontent">
+        <div class="h-eye">${s.eye}</div>
+        <h2 class="h-ttl fd">${s.ttl}</h2>
+        <p class="h-dsc">${s.dsc}</p>
+        <div class="h-act">
+          <button class="btn-fire" onclick="scrollTo('#menu-sec')">${s.c1}</button>
+          <button class="btn-ghost" onclick="scrollTo('#menu-sec')">${s.c2}</button>
+        </div>
+      </div>`;
+    tr.appendChild(d);
+    const dot=document.createElement('span');
+    dot.className='hdot'+(i===0?' act':'');
+    dot.addEventListener('click',()=>goSlide(i));
+    dt.appendChild(dot);
+  });
+  document.getElementById('h-prev').addEventListener('click',()=>goSlide((hIdx-1+heroSlides.length)%heroSlides.length));
+  document.getElementById('h-next').addEventListener('click',()=>goSlide((hIdx+1)%heroSlides.length));
+  startHeroTimer();
+}
+
+function goSlide(n){
+  const sl=document.querySelectorAll('.hslide'), dt=document.querySelectorAll('.hdot');
+  sl[hIdx].classList.remove('act'); sl[hIdx].classList.add('lv');
+  setTimeout(()=>sl[hIdx]?.classList.remove('lv'),1200);
+  dt[hIdx].classList.remove('act');
+  hIdx=n; sl[hIdx].classList.add('act'); dt[hIdx].classList.add('act');
+  resetProg(); clearInterval(hTmr); startHeroTimer();
+}
+
+function startHeroTimer(){ hTmr=setInterval(()=>goSlide((hIdx+1)%heroSlides.length),HD); resetProg(); }
+
+function resetProg(){
+  const b=document.getElementById('hpb');
+  b.style.transition='none'; b.style.width='0';
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{ b.style.transition=`width ${HD}ms linear`; b.style.width='100%'; }));
+}
+
+/* ================================================================
+   EMBERS
+================================================================ */
+function buildEmbers(){
+  const c=document.getElementById('emb-wrap');
+  for(let i=0;i<18;i++){
+    const p=document.createElement('div');
+    p.className='ep';
+    const sz=(2+Math.random()*4)+'px';
+    p.style.cssText=`left:${Math.random()*100}%;width:${sz};height:${sz};animation-duration:${4+Math.random()*6}s;animation-delay:${Math.random()*6}s;opacity:${.3+Math.random()*.7}`;
+    c.appendChild(p);
+  }
+}
+
+/* ================================================================
+   CATEGORY NAV
+================================================================ */
+function buildCatNav(){
+  const tr=document.getElementById('cat-track');
+  Object.entries(catMeta).forEach(([k,m])=>{
+    const b=document.createElement('button');
+    b.className='ccat'+(k==='all'?' act':'');
+    b.textContent=m.lbl;
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.ccat').forEach(x=>x.classList.remove('act'));
+      b.classList.add('act');
+      buildMenu(k);
+      document.getElementById('menu-sec').scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    tr.appendChild(b);
+  });
+  document.getElementById('cat-prev').addEventListener('click',()=>tr.scrollBy({left:-200,behavior:'smooth'}));
+  document.getElementById('cat-next').addEventListener('click',()=>tr.scrollBy({left:200,behavior:'smooth'}));
+}
+
+/* ================================================================
+   DEALS
+================================================================ */
+function buildDeals(){
+  const g=document.getElementById('deals-grid');
+  deals.forEach((d,i)=>{
+    const c=document.createElement('div');
+    c.className=`col-md-6 col-lg-3 rv d${i+1}`;
+    c.innerHTML=`<div class="deal-card">
+      <div class="dc-bg" style="background-image:url('${PH(d.col,d.ttl)}')"></div>
+      <div class="dc-ovl"></div>
+      <div class="dc-cnt">
+        <div class="dc-tag">${d.tag}</div>
+        <div class="dc-ttl fd">${d.ttl}</div>
+        <div class="dc-sub">${d.sub}</div>
+      </div>
+    </div>`;
+    g.appendChild(c);
+  });
+}
+
+/* ================================================================
+   MENU GRID (UPDATED: 3D BOOK STYLE WITH LOCAL IMAGES)
+================================================================= */
+function buildMenu(filter){
+  const grid=document.getElementById('menu-grid');
+  grid.innerHTML='';
+  document.getElementById('srch-res').style.display='none';
+  grid.style.display='flex';
+
+  const entries=filter==='all'?Object.entries(menuData):Object.entries(menuData).filter(([k])=>k===filter);
+
+  entries.forEach(([cat,items],gi)=>{
+    const m=catMeta[cat]||{lbl:cat,col:'111111'};
+    const card=document.createElement('div');
+    card.className='book rv';
+    card.style.transitionDelay=(gi%8)*.07+'s';
+
+    // Item List
+    const rows=items.map(item=>{
+      const id=`${cat}-${item.n}`;
+      const wi=S.wish.includes(id);
+      const imgU=PH(m.col,item.n);
+      return `<div class="mrow">
+        <div class="mrow-l">
+          <div class="mrow-n">${item.n}${item.b?'<span class="bs-tag">⭐ Best</span>':''}</div>
+          <div class="mrow-p">Rs. ${item.p.toLocaleString()}</div>
+        </div>
+        <div class="act-row">
+          <button class="add-b" onclick="qadd(event,'${id}','${item.n.replace(/'/g,"\\'")}',${item.p},'${imgU}','${(item.dsc||'').replace(/'/g,"\\'")}')" aria-label="Add">+</button>
+           <button class="wish-b${wi?' on':''}" onclick="twish(event,'${id}')" aria-label="Wishlist">
+            <i class="fa-${wi?'solid':'regular'} fa-heart"></i>
+          </button>
+        </div>
+      </div>`;
+    }).join('');
+
+    // Updated Cover Image with Error Fallback
+    card.innerHTML=`
+      <div class="menu-content">
+        <h5>${m.lbl}</h5>
+        ${rows}
+      </div>
+      <div class="cover">
+        <img src="images/${cat}.jpg" alt="${m.lbl}" loading="lazy" onerror="this.onerror=null;this.src='${PH(m.col,m.lbl)}'"/>
+        <div class="cover-ttl">${m.lbl}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  setTimeout(checkReveal,80);
+}
+
+/* ================================================================
+   CART LOGIC
+================================================================ */
+function qadd(event,id,name,price,imgUrl,dsc){
+  event.stopPropagation();
+  S.add({id,name,price,img:imgUrl,dsc,qty:1});
+  toast(`🛒 ${name} added!`);
+  const b=event.target.closest('.add-b');
+  if(b){ b.textContent='✓'; setTimeout(()=>b.textContent='+',700); }
+}
+
+function twish(event,id){
+  event.stopPropagation();
+  S.tw(id);
+  const b=event.currentTarget;
+  const on=S.wish.includes(id);
+  b.className='wish-b'+(on?' on':'');
+  b.innerHTML=`<i class="fa-${on?'solid':'regular'} fa-heart"></i>`;
+  toast(on?'❤️ Added to wishlist!':'💔 Removed from wishlist');
+}
+
+function badge(){
+  const cnt=S.cnt(), el=document.getElementById('cbadge');
+  el.textContent=cnt; el.style.display=cnt>0?'flex':'none';
+}
+
+function wishBadge(){
+  const cnt=S.wcnt(), el=document.getElementById('wbadge');
+  el.textContent=cnt; el.style.display=cnt>0?'flex':'none';
+}
+
+/* ================================================================
+   CART DRAWER
+================================================================ */
+function setupCart(){
+  document.getElementById('cart-btn').addEventListener('click',openCart);
+  document.getElementById('cart-cls').addEventListener('click',closeCart);
+  document.getElementById('cart-bg').addEventListener('click',closeCart);
+  document.getElementById('cart-co').addEventListener('click',waOrder);
+}
+
+function openCart(){ document.getElementById('cart-drw').classList.add('open'); document.getElementById('cart-bg').classList.add('open'); }
+function closeCart(){ document.getElementById('cart-drw').classList.remove('open'); document.getElementById('cart-bg').classList.remove('open'); }
+
+function renderCart(){
+  const bd=document.getElementById('cart-bd'), ft=document.getElementById('cart-ft');
+  if(!S.cart.length){
+    bd.innerHTML=`<div class="cart-empty"><i class="fa-solid fa-bag-shopping"></i><p style="font-weight:700;font-size:15px;margin-bottom:5px">Your order is empty</p><p style="font-size:13px">Add something delicious!</p></div>`;
+    ft.style.display='none'; return;
+  }
+  ft.style.display='block';
+  bd.innerHTML=S.cart.map(item=>`<div class="ci-row">
+    <img src="${item.img}" alt="${item.name}" class="ci-img" loading="lazy"/>
+    <div class="ci-info">
+      <div class="ci-nm">${item.name}</div>
+      <div class="ci-pr">Rs. ${(item.price*item.qty).toLocaleString()}</div>
+      <div class="ci-ctrl">
+        <button class="cq-b" onclick="S.upq('${item.id}',-1)">−</button>
+        <span class="cq-v">${item.qty}</span>
+        <button class="cq-b" onclick="S.upq('${item.id}',1)">+</button>
+      </div>
+    </div>
+    <button class="ci-rm" onclick="S.del('${item.id}')" aria-label="Remove"><i class="fa-solid fa-trash-can"></i></button>
+  </div>`).join('');
+  document.getElementById('c-sub').textContent=`Rs. ${S.sub().toLocaleString()}`;
+  document.getElementById('c-tax').textContent=`Rs. ${S.tax().toLocaleString()}`;
+  document.getElementById('c-tot').textContent=`Rs. ${S.tot().toLocaleString()}`;
+}
+
+function waOrder(){
+  if(!S.cart.length) return;
+  let msg='*New Order — Grill House*\n\n';
+  S.cart.forEach(i=>{ msg+=`• ${i.name} ×${i.qty} — Rs. ${(i.price*i.qty).toLocaleString()}\n`; });
+  msg+=`\nSubtotal: Rs. ${S.sub().toLocaleString()}\nTax (5%): Rs. ${S.tax().toLocaleString()}\n*Total: Rs. ${S.tot().toLocaleString()}*`;
+  if(S.user) msg+=`\n\nCustomer: ${S.user.name} · ${S.user.phone}`;
+  window.open(`https://wa.me/923326193848?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+/* ================================================================
+   WISHLIST DRAWER (FROM LEFT)
+================================================================ */
+function setupWishlist(){
+  document.getElementById('wish-btn').addEventListener('click',openWish);
+  document.getElementById('wish-cls').addEventListener('click',closeWish);
+  document.getElementById('wish-bg').addEventListener('click',closeWish);
+}
+
+function openWish(){ document.getElementById('wish-drw').classList.add('open'); document.getElementById('wish-bg').classList.add('open'); }
+function closeWish(){ document.getElementById('wish-drw').classList.remove('open'); document.getElementById('wish-bg').classList.remove('open'); }
+
+function renderWish(){
+  const bd=document.getElementById('wish-bd');
+  if(!S.wish.length){
+    bd.innerHTML=`<div class="wish-empty"><i class="fa-solid fa-heart-crack"></i><p style="font-weight:700;font-size:15px;margin-bottom:5px">No favorites yet</p><p style="font-size:13px">Start adding your favorite items!</p></div>`;
+    return;
+  }
+  
+  // Get full item details from wish list
+  const items = [];
+  S.wish.forEach(id=>{
+    const [cat,name] = id.split('-');
+    const category = Object.entries(menuData).find(([k])=>k===cat.split('-')[0]||k===cat);
+    if(!category) return;
+    const item = category[1].find(i=>i.n===name.replace(/^[^-]*-/,''));
+    if(item){
+      const m=catMeta[cat.split('-')[0]||cat]||{lbl:cat,col:'111'};
+      items.push({id,cat,name:item.n,price:item.p,img:PH(m.col,item.n),best:item.b});
+    }
+  });
+  
+  bd.innerHTML=items.map(item=>`<div class="wi-row">
+    <img src="${item.img}" alt="${item.name}" class="wi-img" loading="lazy"/>
+    <div class="wi-info">
+      <div class="wi-nm">${item.name}${item.best?'<span class="bs-tag">⭐ Best</span>':''}</div>
+      <div class="wi-pr">Rs. ${item.price.toLocaleString()}</div>
+      <div class="wi-btn">
+        <button class="wi-add" onclick="qadd(event,'${item.id}','${item.name.replace(/'/g,"\\'")}',${item.price},'${item.img}','')">Add to Cart</button>
+        <button class="wi-rm" onclick="S.tw('${item.id}');renderWish();wishBadge();toast('💔 Removed from wishlist')" aria-label="Remove"><i class="fa-solid fa-trash-can"></i></button>
+      </div>
+    </div>
+  </div>`).join('');
+}
+
+/* ================================================================
+   PRODUCT MODAL
+================================================================ */
+let pmQty=1, pmItem=null;
+
+function openPM(id,name,price,imgUrl,dsc){
+  pmQty=1; pmItem={id,name,price,img:imgUrl};
+  document.getElementById('pm-img').src=imgUrl;
+  document.getElementById('pm-img').alt=name;
+  document.getElementById('pm-ttl').textContent=name;
+  document.getElementById('pm-pr').textContent=`Rs. ${price.toLocaleString()}`;
+  document.getElementById('pm-dsc').textContent=dsc||'Freshly prepared with premium ingredients. Served hot.';
+  document.getElementById('pm-qv').textContent='1';
+  document.getElementById('prod-m').classList.add('open');
+}
+
+document.getElementById('pm-cls').addEventListener('click',()=>document.getElementById('prod-m').classList.remove('open'));
+document.getElementById('prod-m').addEventListener('click',e=>{ if(e.target===document.getElementById('prod-m')) document.getElementById('prod-m').classList.remove('open'); });
+document.getElementById('pm-up').addEventListener('click',()=>{ pmQty++; document.getElementById('pm-qv').textContent=pmQty; });
+document.getElementById('pm-dn').addEventListener('click',()=>{ if(pmQty>1){pmQty--; document.getElementById('pm-qv').textContent=pmQty;} });
+document.getElementById('pm-add').addEventListener('click',()=>{
+  if(!pmItem) return;
+  S.add({...pmItem,qty:pmQty});
+  toast(`🛒 ${pmItem.name} ×${pmQty} added!`);
+  document.getElementById('prod-m').classList.remove('open');
+  openCart();
+});
+
+/* ================================================================
+   AUTH
+================================================================ */
+function setupAuth(){
+  document.getElementById('login-btn').addEventListener('click',()=>document.getElementById('auth-m').classList.add('open'));
+  document.getElementById('auth-cls').addEventListener('click',closeAuth);
+  document.getElementById('auth-m').addEventListener('click',e=>{ if(e.target===document.getElementById('auth-m')) closeAuth(); });
+
+  document.querySelectorAll('.atab').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.atab').forEach(x=>x.classList.remove('act'));
+      document.querySelectorAll('.aform').forEach(x=>x.classList.remove('act'));
+      b.classList.add('act');
+      document.getElementById(b.dataset.tab).classList.add('act');
+    });
+  });
+
+  document.querySelectorAll('.pw-tog').forEach(b=>{
+    b.addEventListener('click',()=>{
+      const inp=document.getElementById(b.dataset.tgt);
+      const isT=inp.type==='text'; inp.type=isT?'password':'text';
+      b.querySelector('i').className=isT?'fa-regular fa-eye':'fa-regular fa-eye-slash';
+    });
+  });
+
+  document.getElementById('s-go').addEventListener('click',doSignup);
+  document.getElementById('l-go').addEventListener('click',doLogin);
+
+  document.getElementById('u-av').addEventListener('click',e=>{ e.stopPropagation(); document.getElementById('u-drop').classList.toggle('open'); });
+  document.addEventListener('click',()=>document.getElementById('u-drop').classList.remove('open'));
+  document.getElementById('dp-logout').addEventListener('click',doLogout);
+}
+
+function closeAuth(){ document.getElementById('auth-m').classList.remove('open'); }
+
+function doSignup(){
+  const nm=v('s-nm'), em=v('s-em'), ph=v('s-ph'), pw=v('s-pw'), cp=v('s-cpw');
+  const err=document.getElementById('s-err'), suc=document.getElementById('s-suc');
+  err.classList.remove('on'); suc.classList.remove('on');
+  if(!nm||!em||!ph||!pw) return showE(err,'Please fill in all fields.');
+  if(pw.length<6) return showE(err,'Password must be at least 6 characters.');
+  if(pw!==cp) return showE(err,'Passwords do not match.');
+  if(S.users.find(u=>u.email===em)) return showE(err,'Email already registered. Please login.');
+  const user={id:Date.now().toString(),name:nm,email:em,phone:ph,pw};
+  S.users.push(user); S.sus();
+  suc.textContent='✓ Account created! Logging you in…'; suc.classList.add('on');
+  setTimeout(()=>{ loginUser({id:user.id,name:user.name,email:user.email,phone:user.phone}); closeAuth(); },1200);
+}
+
+function doLogin(){
+  const em=v('l-em'), pw=v('l-pw'), rem=document.getElementById('l-rem').checked;
+  const err=document.getElementById('l-err');
+  err.classList.remove('on');
+  const user=S.users.find(u=>u.email===em&&u.pw===pw);
+  if(!user) return showE(err,'Invalid email or password.');
+  loginUser({id:user.id,name:user.name,email:user.email,phone:user.phone});
+  if(rem) localStorage.setItem('gh_rem',em);
+  closeAuth(); toast(`👋 Welcome back, ${user.name}!`);
+}
+
+function loginUser(u){ S.user=u; S.su(); }
+
+function doLogout(){
+  S.user=null; S.su(); localStorage.removeItem('gh_rem');
+  document.getElementById('u-drop').classList.remove('open');
+  toast('👋 Logged out. See you soon!');
+}
+
+function showE(el,msg){ el.textContent=msg; el.classList.add('on'); }
+function v(id){ return document.getElementById(id).value.trim(); }
+
+function updateUserUI(){
+  const lb=document.getElementById('login-btn'), av=document.getElementById('u-av');
+  if(S.user){ lb.style.display='none'; av.style.display='flex'; av.textContent=S.user.name.charAt(0).toUpperCase(); }
+  else { lb.style.display='flex'; av.style.display='none'; }
+}
+
+/* ================================================================
+   INFO MODAL
+================================================================ */
+function setupInfoModal(){
+  ['loc-pill','ph-pill'].forEach(id=>{
+    const el=document.getElementById(id);
+    el.addEventListener('click',()=>openInfo(el.dataset.type,el.dataset.val));
+    el.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openInfo(el.dataset.type,el.dataset.val); } });
+  });
+  document.getElementById('info-cls').addEventListener('click',closeInfo);
+  document.getElementById('info-m').addEventListener('click',e=>{ if(e.target===document.getElementById('info-m')) closeInfo(); });
+}
+
+function openInfo(type,val){
+  document.getElementById('info-ttl').textContent=type==='location'?'Our Location':'Call Us';
+  const body=document.getElementById('info-body');
+  if(type==='location'){
+    body.innerHTML=`<div class="info-row"><i class="fa-solid fa-location-dot" style="color:var(--accent);font-size:19px"></i><span>${val}</span></div>
+      <button class="btn-fire" style="font-size:13px;padding:10px 20px;margin-top:12px" onclick="navigator.clipboard&&navigator.clipboard.writeText('${val}').then(()=>toast('📍 Address copied!'))">Copy Address</button>`;
+  } else {
+    body.innerHTML=`<div class="info-row"><i class="fa-solid fa-phone" style="color:var(--accent);font-size:19px"></i><span>${val}</span></div>
+      <div style="display:flex;gap:9px;margin-top:14px;flex-wrap:wrap">
+        <a href="tel:${val.replace(/\s/g,'')}" class="btn-fire" style="font-size:13px;padding:10px 20px"><i class="fa-solid fa-phone" style="margin-right:5px"></i>Call Now</a>
+        <a href="https://wa.me/923326193848" target="_blank" class="btn-ghost" style="font-size:13px;padding:10px 20px;border:1px solid rgba(255,255,255,.28);border-radius:14px;color:var(--text)"><i class="fa-brands fa-whatsapp" style="margin-right:5px;color:#25D366"></i>WhatsApp</a>
+      </div>`;
+  }
+  document.getElementById('info-m').classList.add('open');
+}
+
+function closeInfo(){ document.getElementById('info-m').classList.remove('open'); }
+
+/* ================================================================
+   TESTIMONIALS (OWL CAROUSEL)
+================================================================= */
+function buildTesti(){
+  const track = document.getElementById('reviews-carousel');
+  track.innerHTML = '';
+  
+  testimonials.forEach((t) => {
+    const item = document.createElement('div');
+    item.className = 'item';
+    item.innerHTML = `
+      <div class="tsti-card">
+        <div class="tsti-stars">${'★'.repeat(t.st)}${'☆'.repeat(5-t.st)}</div>
+        <p class="tsti-txt">"${t.tx}"</p>
+        <div class="tsti-auth">
+          <div class="tsti-av">${t.nm.charAt(0)}</div>
+          <div><div class="tsti-nm">${t.nm}</div><div class="tsti-rl">${t.rl}</div></div>
+        </div>
+      </div>
+    `;
+    track.appendChild(item);
+  });
+
+  // Initialize Owl Carousel
+  $('#reviews-carousel').owlCarousel({
+      loop: true,
+      margin: 20,
+      nav: false,
+      dots: true,
+      autoplay: true,
+      autoplayTimeout: 4000,
+      autoplayHoverPause: true,
+      responsive: {
+          0: { items: 1 },
+          600: { items: 2 },
+          1000: { items: 3 }
+      }
+  });
+}
+
+/* ================================================================
+   SEARCH
+================================================================ */
+function setupSearch(){
+  const tog=document.getElementById('srch-tog');
+  const sec=document.getElementById('srch-sec');
+  const inp=document.getElementById('srch-inp');
+  const clr=document.getElementById('srch-clr');
+
+  tog.addEventListener('click',()=>{
+    const open=sec.style.display==='block';
+    sec.style.display=open?'none':'block';
+    if(!open) setTimeout(()=>inp.focus(),80);
+  });
+
+  clr.addEventListener('click',()=>{ inp.value=''; showGrid(); inp.focus(); });
+  inp.addEventListener('input',()=>{ const q=inp.value.trim().toLowerCase(); q?doSearch(q):showGrid(); });
+}
+
+function doSearch(q){
+  const res=[];
+  Object.entries(menuData).forEach(([cat,items])=>{
+    items.forEach(item=>{ if(item.n.toLowerCase().includes(q)) res.push({...item,cat}); });
+  });
+  document.getElementById('menu-grid').style.display='none';
+  document.getElementById('srch-res').style.display='block';
+  const list=document.getElementById('srch-list');
+  if(!res.length){ list.innerHTML=`<p style="color:var(--muted);padding:18px 0">No results for "<strong>${q}</strong>"</p>`; return; }
+  list.innerHTML=res.map(r=>{
+    const m=catMeta[r.cat]||{lbl:r.cat,col:'111'};
+    const img=PH(m.col,r.n);
+    return `<div class="sr-item">
+      <img src="${img}" alt="${r.n}" class="sr-img" loading="lazy"/>
+      <div class="sr-info">
+        <div class="sr-nm">${r.n}${r.b?'<span class="bs-tag">⭐ Best</span>':''}</div>
+        <div class="sr-cat">${m.lbl}</div>
+        <div class="sr-pr">Rs. ${r.p.toLocaleString()}</div>
+      </div>
+      <button class="add-b" onclick="qadd(event,'${r.cat}-${r.n}','${r.n.replace(/'/g,"\\'")}',${r.p},'${img}','')" aria-label="Add">+</button>
+    </div>`;
+  }).join('');
+}
+
+function showGrid(){ document.getElementById('menu-grid').style.display='flex'; document.getElementById('srch-res').style.display='none'; }
+
+/* ================================================================
+   SCROLL REVEAL
+================================================================ */
+function setupReveal(){ window.addEventListener('scroll',checkReveal,{passive:true}); checkReveal(); }
+function checkReveal(){ document.querySelectorAll('.rv:not(.vis)').forEach(el=>{ if(el.getBoundingClientRect().top<window.innerHeight-55) el.classList.add('vis'); }); }
+
+/* ================================================================
+   SCROLL TOP
+================================================================ */
+function setupScrollTop(){ document.getElementById('st-btn').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'})); }
+
+/* ================================================================
+   SMOOTH SCROLL HELPER
+================================================================ */
+function scrollTo(sel){ document.querySelector(sel)?.scrollIntoView({behavior:'smooth',block:'start'}); }
+
+/* ================================================================
+   TOAST
+================================================================ */
+function toast(msg,dur=2700){
+  const wrap=document.getElementById('toast-wrap');
+  const t=document.createElement('div'); t.className='toast-i'; t.textContent=msg;
+  wrap.appendChild(t);
+  setTimeout(()=>{ t.classList.add('rm'); setTimeout(()=>t.remove(),350); },dur);
+}
+
+/* ================================================================
+   ESC KEY
+================================================================ */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    closeCart(); closeWish(); closeInfo();
+    ['auth-m','prod-m'].forEach(id=>document.getElementById(id).classList.remove('open'));
+  }
+});
+</script>
+</body>
+</html>
